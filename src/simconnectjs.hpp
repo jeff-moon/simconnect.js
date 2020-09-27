@@ -1,7 +1,6 @@
-
 #pragma once
 
-extern "C"
-{
-  int add(int, int);
-}
+#include <SimConnect.h>
+
+public:
+private:
