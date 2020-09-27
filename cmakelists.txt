@@ -1,0 +1,9 @@
+cmake_minimum_required(VERSION 3.3)
+project(simconnectjs)
+
+INCLUDE_DIRECTORIES(d:/include)
+LINK_DIRECTORIES(lib)
+
+ADD_EXECUTABLE(simconnectjs src/main.cc)
+
+TARGET_LINK_LIBRARIES(simconnectjs simconnect)
