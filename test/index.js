@@ -7,11 +7,20 @@ const simconnect = new SimConnectJs();
 let ret = simconnect.open("simconnectjs");
 console.log(ret);
 
-ret = simconnect.addToDataDefinition(position, "PLANE LATITUDE", "degrees", 4);
-console.log(ret);
 
-ret = simconnect.requestDataOnSimObjectType(1, position, 0, 0, () =>
-  console.log("DID IT")
-);
+const defId = simconnect.createDataDefinition([
+  {
+    datumName: "PLANE ALTITUDE",
+    units: "degrees",
+    dataType: 4
+  },
+  {
+    datumName: "PLANE LONGITUDE",
+    units: "degrees",
+    dataType: 4
+  }
+]);
 
-setInterval(() => console.log("HELLO"), 2000);
+(async () => {
+  const values = await simconnect.requestDataOnSimObjectType(defId);
+})();
