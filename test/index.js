@@ -1,26 +1,14 @@
-const { SimConnectJs } = require("../build/Release/SimConnectJs.node");
-
-const position = 1;
-const requestId = 1;
-
-const simconnect = new SimConnectJs();
-let ret = simconnect.open("simconnectjs");
-console.log(ret);
-
-
-const defId = simconnect.createDataDefinition([
-  {
-    datumName: "PLANE ALTITUDE",
-    units: "degrees",
-    dataType: 4
-  },
-  {
-    datumName: "PLANE LONGITUDE",
-    units: "degrees",
-    dataType: 4
-  }
-]);
+const simconnect = require("../build/Release/SimConnectJs.node");
 
 (async () => {
-  const values = await simconnect.requestDataOnSimObjectType(defId);
+  let ret;
+  console.log("STARTING OPEN");
+  ret = await simconnect.open("simconnect_test");
+  console.log(ret);
+  console.log("COMPLETED OPEN");
+
+  ret = simconnect.createDataDefinition([
+    { id: "ID1", units: "UNITS1", dataType: 1 },
+    { id: "ID2", units: "UNITS2", dataType: 2 },
+  ]);
 })();

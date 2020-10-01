@@ -4,12 +4,11 @@
         "cflags!": ["-fno-exceptions"],
         "cflags_cc!": ["-fno-exceptions"],
         "sources": [
-            "src/index.cpp",
-            "src/simconnectjs.cpp",
-            "src/worker/call_dispatch_worker.cpp"
+            "src/addon.cc",
+            "src/addon_node.cc",
+            "src/object/napi_object_helper.cc"
         ],
         'include_dirs': [
-            "<!@(node -p \"require('node-addon-api').include\")",
             "./ext"
         ],
         "dll_files": [
